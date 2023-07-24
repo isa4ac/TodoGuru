@@ -9,31 +9,41 @@ using Xamarin.Forms;
 namespace TodoGuru
 {
 
-    public class TodoItem
-    {
-        public string Name { get; set; }
-    }
-
     public partial class MainPage : ContentPage
     {
 
-        private List<TodoItem> _todoItems = new List<TodoItem>();
+        public static string ShortDateFormat = "yyyy-MM-dd HH':'mm";
+        public List<UserTask> currentTasks;
 
-        public MainPage()
+        public MainPage() 
         {
             InitializeComponent();
-            TodoListView.ItemsSource = _todoItems;
         }
-        private void OnAddTodoClicked(object sender, EventArgs e)
+
+        protected override async void OnAppearing()
         {
-            var todoItem = new TodoItem { Name = TodoEntry.Text };
-            _todoItems.Add(todoItem);
+            base.OnAppearing();
+            TodoCollectionView.ItemsSource = await App.Database.getTaskAsync(); 
+        }
 
-            TodoEntry.Text = string.Empty;
+        private async void OnAddTodoClicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TodoEntry.Text))
+            {
+                int newTaskId = await App.Database.saveUserTaskAsync(new UserTask
+                {
+                    taskName = TodoEntry.Text,
+                    logDate = DateTime.Now.ToString(ShortDateFormat),
+                    dueDate = DateTime.Now.ToString(ShortDateFormat), // TO-DO: update with field data
+                    description = string.Empty // TO-DO: update with user entry field
+                });
 
-            TodoListView.ItemsSource = null;
-            TodoListView.ItemsSource = _todoItems;
+                TodoEntry.Text = string.Empty;
 
+                currentTasks = await App.Database.getTaskAsync();
+
+                TodoCollectionView.ItemsSource = currentTasks;
+            }
         }
     }
 }
