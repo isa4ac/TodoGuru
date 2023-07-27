@@ -2,21 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoGuru.MainPage">
-
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="60" CornerRadius="0">
             <Label Text="Task Categories" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
         </Frame>
         <Entry x:Name="TodoEntry" Placeholder="Enter new todo item"/>
         <Button Text="Add Todo" Clicked="OnAddTodoClicked"/>
-        <ListView x:Name="TodoListView">
-          <ListView.ItemTemplate>
+        <CollectionView x:Name="TodoCollectionView">
+          <CollectionView.ItemTemplate>
             <DataTemplate>
-              <TextCell Text="{Binding Name}"/>
+              <StackLayout>
+                <Label Text="{Binding taskName}"/>
+                <Label Text="{Binding logDate}"/>
+               </StackLayout>
             </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
-
 </ContentPage>
 
