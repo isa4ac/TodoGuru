@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoGuru.MainPage">
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="60" CornerRadius="0">
-            <Label Text="Task Categories" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
+        <Frame BackgroundColor="#8BC800"  Padding="10,60,10,10" CornerRadius="0">
+            <Label Text="To-do Guru" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
         </Frame>
-        <Entry x:Name="TodoEntry" Placeholder="Enter new todo item"/>
-        <Button Text="Add Todo" Clicked="OnAddTodoClicked"/>
+        <Button Text="Create Task" Clicked="OnCreateTaskClicked" />
         <CollectionView x:Name="TodoCollectionView">
           <CollectionView.ItemTemplate>
             <DataTemplate>
-              <StackLayout>
-                <Label Text="{Binding taskName}"/>
-                <Label Text="{Binding logDate}"/>
+              <StackLayout Orientation="Horizontal" Padding="10,0,10,10">
+                  <CheckBox IsChecked="{Binding complete}" />
+                  <StackLayout>
+                    <Label Text="{Binding taskName}"/>
+                    <Label Text="{Binding dueDate}"/>
+                   </StackLayout>
                </StackLayout>
             </DataTemplate>
           </CollectionView.ItemTemplate>

@@ -9,5 +9,6 @@ namespace TodoGuru
         public string logDate { get; set; }
         public string dueDate { get; set; }
         public string description { get; set; }
+        public bool complete { get; set; }
     }
 }
