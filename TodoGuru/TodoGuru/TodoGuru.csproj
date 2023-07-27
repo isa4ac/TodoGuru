@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -28,5 +28,10 @@
     <Folder Include="Resources\Images\" />
     <Folder Include="MainPage\" />
     <Folder Include="AddTaskPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="CategoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
