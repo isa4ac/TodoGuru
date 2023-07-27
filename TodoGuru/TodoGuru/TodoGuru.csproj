@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -19,9 +20,13 @@
   <ItemGroup>
     <None Remove="Resources\" />
     <None Remove="Resources\Images\" />
+    <None Remove="MainPage\" />
+    <None Remove="AddTaskPage\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="MainPage\" />
+    <Folder Include="AddTaskPage\" />
   </ItemGroup>
 </Project>
