@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="TodoGuru.MainPage">
     <StackLayout>
         <Frame BackgroundColor="#8BC800"  Padding="10,60,10,10" CornerRadius="0">
@@ -8,16 +9,20 @@
         </Frame>
         <Button Text="Create Task" Clicked="OnCreateTaskClicked" />
         <Button Text="View Task by Category" Clicked="OnViewByCategoryClicked"/>
-        <CollectionView x:Name="TodoCollectionView">
+        <CollectionView x:Name="TodoCollectionView" SelectionMode="Single" SelectionChanged="SelectedTaskRow">
           <CollectionView.ItemTemplate>
             <DataTemplate>
-              <StackLayout Orientation="Horizontal" Padding="10,0,10,10">
-                  <CheckBox IsChecked="{Binding complete}" />
-                  <StackLayout>
-                    <Label Text="{Binding taskName}"/>
-                    <Label Text="{Binding dueDate}"/>
-                   </StackLayout>
-               </StackLayout>
+              <StackLayout Padding="15">
+                  <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+                      <StackLayout Orientation="Horizontal">
+                          <CheckBox IsChecked="{Binding complete}" />
+                          <StackLayout>
+                            <Label Text="{Binding taskName}"/>
+                            <Label Text="{Binding dueDate}"/>
+                          </StackLayout>
+                      </StackLayout>
+                  </yummy:PancakeView>
+              </StackLayout>
             </DataTemplate>
           </CollectionView.ItemTemplate>
         </CollectionView>
