@@ -21,9 +21,13 @@ namespace TodoGuru.AddTaskPage
 
         private void PopulateCategoryPicker()
         {
-            // Replace this with your desired category list or fetch it from the database
+            
             List<string> categories = new List<string> { "Personal", "Work", "Home", "Others" };
             categoryPicker.ItemsSource = categories;
+
+            // Adds an option for "Enter New Category" at the end
+            categoryPicker.Items.Add("Enter New Category");
+
         }
         private async void OnCreateTaskClicked(object sender, EventArgs e)
         {

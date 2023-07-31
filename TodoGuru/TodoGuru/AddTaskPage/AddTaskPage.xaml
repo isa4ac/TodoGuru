@@ -12,7 +12,8 @@
             <Entry Placeholder="Task Name" x:Name="taskNameEntry" />
             <DatePicker x:Name="dueDatePicker" />
             <Picker x:Name="categoryPicker" Title="Select Category" />
-            <Editor Placeholder="Task Description" x:Name="taskDescriptionEditor" />
+                <Entry Placeholder="Enter New Category" x:Name="newCategoryEntry" />
+                <Editor Placeholder="Task Description" x:Name="taskDescriptionEditor" />
             <Button Text="Create Task" Clicked="OnCreateTaskClicked" />
         </StackLayout>
      </StackLayout>
