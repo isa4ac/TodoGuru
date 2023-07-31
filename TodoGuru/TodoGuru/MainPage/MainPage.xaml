@@ -7,6 +7,7 @@
             <Label Text="To-do Guru" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
         </Frame>
         <Button Text="Create Task" Clicked="OnCreateTaskClicked" />
+        <Button Text="View Task by Category" Clicked="OnViewByCategoryClicked"/>
         <CollectionView x:Name="TodoCollectionView">
           <CollectionView.ItemTemplate>
             <DataTemplate>

@@ -10,5 +10,6 @@ namespace TodoGuru
         public string dueDate { get; set; }
         public string description { get; set; }
         public bool complete { get; set; }
+        public string Category { get; set; }
     }
 }
