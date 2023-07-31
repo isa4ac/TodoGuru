@@ -6,6 +6,9 @@
 
         <StackLayout>
             <Label Text="Category Tasks" FontSize="Title" HorizontalOptions="CenterAndExpand" />
+
+            <Picker x:Name="categoryPicker" Title="Select Category" SelectedIndexChanged="OnCategorySelectedIndexChanged" />
+            
             <CollectionView x:Name="CategoryCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
