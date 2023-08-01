@@ -7,11 +7,13 @@ namespace TodoGuru.AddTaskPage
 {	
 	public partial class AddTaskPage : ContentPage
 	{
+        public bool newCategory = false;
         public static string ShortDateFormat = "yyyy-MM-dd HH':'mm";
         public AddTaskPage ()
 		{
             InitializeComponent();
-		}
+            newCategoryEntry.IsVisible = false;
+        }
 
         protected override void OnAppearing()
         {
@@ -21,10 +23,16 @@ namespace TodoGuru.AddTaskPage
 
         private void PopulateCategoryPicker()
         {
-            // Replace this with your desired category list or fetch it from the database
-            List<string> categories = new List<string> { "Personal", "Work", "Home", "Others" };
+            
+            List<string> categories = new List<string> { "Personal", "Work", "Home", "New Catagory", "No Category" };
             categoryPicker.ItemsSource = categories;
+            categoryPicker.SelectedItem = "No Category";
+
+            // Adds an option for "Enter New Category" at the end
+            //categoryPicker.Items.Add("Enter New Category");
+
         }
+
         private async void OnCreateTaskClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(taskNameEntry.Text))
@@ -33,10 +41,10 @@ namespace TodoGuru.AddTaskPage
                 {
                     taskName = taskNameEntry.Text,
                     logDate = DateTime.Now.ToString(ShortDateFormat),
-                    dueDate = dueDatePicker.Date.ToString(ShortDateFormat), 
+                    dueDate = dueDatePicker.Date.ToString(ShortDateFormat),
                     description = taskDescriptionEditor.Text,
                     complete = false,
-                    Category = categoryPicker.SelectedItem as string
+                    Category = newCategoryEntry.Text == "" ? categoryPicker.SelectedItem.ToString() : newCategoryEntry.Text
                 });
 
                 taskNameEntry.Text = string.Empty;
@@ -46,6 +54,17 @@ namespace TodoGuru.AddTaskPage
 
                 // Navigate back to the TaskListPage
                 await Navigation.PushAsync(new MainPage());
+            }
+        }
+
+        void categoryPicker_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (categoryPicker.SelectedItem != null)
+            {
+                if (categoryPicker.SelectedItem.ToString() == "New Catagory")
+                {
+                    newCategoryEntry.IsVisible = true;
+                }
             }
         }
     }

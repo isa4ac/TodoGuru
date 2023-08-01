@@ -38,7 +38,6 @@ namespace TodoGuru
             var categoryTasks = new List<CategoryTask>();
             foreach (var category in categories)
             {
-
                 var tasksByCategory = allTasks.Where(task => task.Category == category).ToList();
                 categoryTasks.Add(new CategoryTask { CategoryName = category, Tasks = tasksByCategory });
             }
