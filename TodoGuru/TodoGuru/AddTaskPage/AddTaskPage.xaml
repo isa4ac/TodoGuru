@@ -9,11 +9,16 @@
             <Label Text="Add Task" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
         </Frame>
         <StackLayout Padding="10,10,10,10">
+
             <Entry Placeholder="Task Name" x:Name="taskNameEntry" />
+
             <DatePicker x:Name="dueDatePicker" />
-            <Picker x:Name="categoryPicker" Title="Select Category" />
-                <Entry Placeholder="Enter New Category" x:Name="newCategoryEntry" />
-                <Editor Placeholder="Task Description" x:Name="taskDescriptionEditor" />
+
+            <Picker x:Name="categoryPicker" Title="Select Category" PropertyChanged="categoryPicker_PropertyChanged"/>
+            <Entry Placeholder="Enter New Category" x:Name="newCategoryEntry"/>
+
+            <Editor Placeholder="Task Description" x:Name="taskDescriptionEditor" />
+
             <Button Text="Create Task" Clicked="OnCreateTaskClicked" />
         </StackLayout>
      </StackLayout>

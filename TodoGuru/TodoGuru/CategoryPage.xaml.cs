@@ -16,19 +16,28 @@ namespace TodoGuru
         public CategoryPage(List<CategoryTask> categoryTasks)
         {
             InitializeComponent();
-            CategoryCollectionView.ItemsSource = categoryTasks;
+            _allCategoryTasks = categoryTasks;
         }
 
-        private void PopulateCategoryPicker()
+        public List<string> getCatagoryNames()
         {
-            // Get all categories from the list of CategoryTasks
             List<string> categories = new List<string>();
-            foreach (var categoryTask in _allCategoryTasks)
+            foreach (var category in _allCategoryTasks)
             {
-                categories.Add(categoryTask.CategoryName);
+                if (category.CategoryName != null)
+                {
+                    categories.Add(category.CategoryName);
+                }
             }
 
-            categoryPicker.ItemsSource = categories;
+            return categories;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            categoryPicker.ItemsSource = getCatagoryNames();
         }
 
         private void OnCategorySelectedIndexChanged(object sender, EventArgs e)
@@ -46,10 +55,9 @@ namespace TodoGuru
             }
             else
             {
-                var selectedCategoryTask = _allCategoryTasks.Find(c => c.CategoryName == selectedCategory);
-                CategoryCollectionView.ItemsSource = new List<CategoryTask> { selectedCategoryTask };
+                var selectedCategoryTasks = _allCategoryTasks.Find(c => c.CategoryName == selectedCategory);
+                CategoryCollectionView.ItemsSource = selectedCategoryTasks.Tasks;
             }
         }
-    
-}
+    }
 }

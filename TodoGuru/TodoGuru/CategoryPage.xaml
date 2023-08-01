@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="TodoGuru.CategoryPage">
     <ContentPage.Content>
 
@@ -12,23 +13,20 @@
             <CollectionView x:Name="CategoryCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding CategoryName}" FontSize="Subtitle" />
-                            <CollectionView ItemsSource="{Binding Tasks}" HeightRequest="150">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding taskName}" />
-                                            <Label Text="{Binding dueDate}" />
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                        <StackLayout Padding="15">
+                            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+                               <StackLayout Orientation="Horizontal">
+                                   <CheckBox IsChecked="{Binding complete}" />
+                                   <StackLayout>
+                                     <Label Text="{Binding taskName}"/>
+                                     <Label Text="{Binding dueDate}"/>
+                                   </StackLayout>
+                               </StackLayout>
+                            </yummy:PancakeView>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>
