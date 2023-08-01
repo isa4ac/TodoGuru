@@ -8,7 +8,9 @@ namespace TodoGuru.AddTaskPage
 	public partial class AddTaskPage : ContentPage
 	{
         public bool newCategory = false;
-        public static string ShortDateFormat = "yyyy-MM-dd HH':'mm";
+        public static string logDateFormat = "MM/d/yy h':'mm tt";
+        public static string dueDateFormat = "MM/d/yy";
+
         public AddTaskPage ()
 		{
             InitializeComponent();
@@ -40,8 +42,8 @@ namespace TodoGuru.AddTaskPage
                 int newTaskId = await App.Database.saveUserTaskAsync(new UserTask
                 {
                     taskName = taskNameEntry.Text,
-                    logDate = DateTime.Now.ToString(ShortDateFormat),
-                    dueDate = dueDatePicker.Date.ToString(ShortDateFormat),
+                    logDate = DateTime.Now.ToString(logDateFormat),
+                    dueDate = dueDatePicker.Date.ToString(dueDateFormat),
                     description = taskDescriptionEditor.Text,
                     complete = false,
                     Category = newCategoryEntry.Text == "" ? categoryPicker.SelectedItem.ToString() : newCategoryEntry.Text
