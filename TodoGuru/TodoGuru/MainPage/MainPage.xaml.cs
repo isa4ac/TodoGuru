@@ -21,15 +21,24 @@ namespace TodoGuru
         {
             InitializeComponent();
         }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             TodoCollectionView.ItemsSource = await App.Database.getTaskAsync();
         }
+
         private async void OnCreateTaskClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddTaskPage.AddTaskPage());
         }
+
+        private async void SelectedTaskRow(object sender, SelectionChangedEventArgs e)
+        {
+            var task = e.CurrentSelection.FirstOrDefault() as UserTask;
+            await Navigation.PushAsync(new TaskView.TaskView(task));
+        }
+
         private async void OnViewByCategoryClicked(object sender, EventArgs e)
         {
             var allTasks = await App.Database.getTaskAsync();
