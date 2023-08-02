@@ -13,6 +13,7 @@ namespace TodoGuru
     public class TodoItem
     {
         public string Name { get; set; }
+        public bool IsCompleted { get; set; }
     }
 
     public partial class MainPage : ContentPage
@@ -25,7 +26,7 @@ namespace TodoGuru
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            TodoCollectionView.ItemsSource = await App.Database.getTaskAsync();
+            TodoCollectionView.ItemsSource = (await App.Database.getTaskAsync()).OrderBy(task => task.complete);
         }
 
         private async void OnCreateTaskClicked(object sender, EventArgs e)
@@ -37,6 +38,22 @@ namespace TodoGuru
         {
             var task = e.CurrentSelection.FirstOrDefault() as UserTask;
             await Navigation.PushAsync(new TaskView.TaskView(task));
+        }
+
+        private async void OnCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                var selectedTask = checkBox.BindingContext as UserTask;
+                if (selectedTask != null)
+                {
+                    selectedTask.complete = e.Value;
+                    await App.Database.updateUserTaskAsync(selectedTask);
+                    //TaskNameLabel.TextDecoration
+                    TodoCollectionView.ItemsSource = (await App.Database.getTaskAsync()).OrderBy(task => task.complete);
+                }
+            }
         }
 
         private async void OnViewByCategoryClicked(object sender, EventArgs e)
