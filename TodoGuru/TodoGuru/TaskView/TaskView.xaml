@@ -47,6 +47,17 @@
                     <Label x:Name="descriptionLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
+
+           <Button 
+            x:Name="deleteButton"
+            Text="Delete Task"
+            Clicked="DeleteTask_Clicked"
+            WidthRequest="150"
+            BackgroundColor="#8BC800"
+            TextColor="White"
+            BorderRadius="5"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
