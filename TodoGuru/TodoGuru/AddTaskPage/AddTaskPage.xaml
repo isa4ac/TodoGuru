@@ -14,8 +14,7 @@
 
             <DatePicker x:Name="dueDatePicker" />
 
-            <Picker x:Name="categoryPicker" Title="Select Category" PropertyChanged="categoryPicker_PropertyChanged"/>
-            <Entry Placeholder="Enter New Category" x:Name="newCategoryEntry"/>
+            <Picker x:Name="categoryPicker" Title="Select Category"/>
 
             <Editor Placeholder="Task Description" x:Name="taskDescriptionEditor" />
 

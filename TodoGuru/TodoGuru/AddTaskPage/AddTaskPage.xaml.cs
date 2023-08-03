@@ -14,7 +14,6 @@ namespace TodoGuru.AddTaskPage
         public AddTaskPage ()
 		{
             InitializeComponent();
-            newCategoryEntry.IsVisible = false;
         }
 
         protected override void OnAppearing()
@@ -25,14 +24,10 @@ namespace TodoGuru.AddTaskPage
 
         private void PopulateCategoryPicker()
         {
-            
-            List<string> categories = new List<string> { "Personal", "Work", "Home", "New Catagory", "No Category" };
+
+            List<string> categories = new List<string> { "Personal", "Work", "Home", "No Category" };
             categoryPicker.ItemsSource = categories;
             categoryPicker.SelectedItem = "No Category";
-
-            // Adds an option for "Enter New Category" at the end
-            //categoryPicker.Items.Add("Enter New Category");
-
         }
 
         private async void OnCreateTaskClicked(object sender, EventArgs e)
@@ -46,7 +41,7 @@ namespace TodoGuru.AddTaskPage
                     dueDate = dueDatePicker.Date.ToString(dueDateFormat),
                     description = taskDescriptionEditor.Text,
                     complete = false,
-                    Category = newCategoryEntry.Text == "" ? categoryPicker.SelectedItem.ToString() : newCategoryEntry.Text
+                    Category = categoryPicker.SelectedItem.ToString()
                 });
 
                 taskNameEntry.Text = string.Empty;
@@ -55,18 +50,7 @@ namespace TodoGuru.AddTaskPage
                 await DisplayAlert("Task Added", "New task has been added successfully", "OK");
 
                 // Navigate back to the TaskListPage
-                await Navigation.PushAsync(new MainPage());
-            }
-        }
-
-        void categoryPicker_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (categoryPicker.SelectedItem != null)
-            {
-                if (categoryPicker.SelectedItem.ToString() == "New Catagory")
-                {
-                    newCategoryEntry.IsVisible = true;
-                }
+                await Navigation.PopAsync();
             }
         }
     }

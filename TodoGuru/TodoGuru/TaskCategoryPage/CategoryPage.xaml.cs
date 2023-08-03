@@ -13,13 +13,13 @@ namespace TodoGuru
     public partial class CategoryPage : ContentPage
     {
         private List<CategoryTask> _allCategoryTasks;
-        public CategoryPage(List<CategoryTask> categoryTasks)
+        public CategoryPage()
         {
             InitializeComponent();
-            _allCategoryTasks = categoryTasks;
+            CategoryCollectionView.ItemsSource = null;
         }
 
-        public List<string> getCatagoryNames()
+        public List<string> getCategoryNames()
         {
             List<string> categories = new List<string>();
             foreach (var category in _allCategoryTasks)
@@ -37,7 +37,19 @@ namespace TodoGuru
         {
             base.OnAppearing();
 
-            categoryPicker.ItemsSource = getCatagoryNames();
+            var allTasks = await App.Database.getTaskAsync();
+            var categories = allTasks.Select(task => task.Category).Distinct().ToList();
+
+            var categoryTasks = new List<CategoryTask>();
+            foreach (var category in categories)
+            {
+                var tasksByCategory = allTasks.Where(task => task.Category == category).ToList();
+                categoryTasks.Add(new CategoryTask { CategoryName = category, Tasks = tasksByCategory });
+            }
+
+            _allCategoryTasks = categoryTasks;
+            categoryPicker.ItemsSource = getCategoryNames();
+            UpdateTaskListForSelectedCategory();
         }
 
         private void OnCategorySelectedIndexChanged(object sender, EventArgs e)
@@ -48,15 +60,31 @@ namespace TodoGuru
         private void UpdateTaskListForSelectedCategory()
         {
             string selectedCategory = categoryPicker.SelectedItem as string;
-
-            if (string.IsNullOrEmpty(selectedCategory))
-            {
-                CategoryCollectionView.ItemsSource = _allCategoryTasks;
-            }
-            else
+            if (selectedCategory != null)
             {
                 var selectedCategoryTasks = _allCategoryTasks.Find(c => c.CategoryName == selectedCategory);
-                CategoryCollectionView.ItemsSource = selectedCategoryTasks.Tasks;
+                CategoryCollectionView.ItemsSource = selectedCategoryTasks.Tasks.OrderBy(task => task.complete).ThenBy(task => task.dueDate);
+            }
+        }
+
+        private async void SelectedTaskRow(object sender, SelectionChangedEventArgs e)
+        {
+            var task = e.CurrentSelection.FirstOrDefault() as UserTask;
+            await Navigation.PushAsync(new TaskView.TaskView(task));
+            UpdateTaskListForSelectedCategory();
+        }
+
+        private async void OnCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                var selectedTask = checkBox.BindingContext as UserTask;
+                if (selectedTask != null)
+                {
+                    selectedTask.complete = checkBox.IsChecked;
+                    await App.Database.updateUserTaskAsync(selectedTask);
+                }
             }
         }
     }

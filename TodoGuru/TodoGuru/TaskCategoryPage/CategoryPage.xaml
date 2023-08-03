@@ -10,13 +10,13 @@
 
             <Picker x:Name="categoryPicker" Title="Select Category" SelectedIndexChanged="OnCategorySelectedIndexChanged" />
             
-            <CollectionView x:Name="CategoryCollectionView">
+            <CollectionView x:Name="CategoryCollectionView" SelectionMode="Single" SelectionChanged="SelectedTaskRow">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="15">
                             <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                                <StackLayout Orientation="Horizontal">
-                                   <CheckBox IsChecked="{Binding complete}" />
+                                   <CheckBox x:Name="checkBox" IsChecked="{Binding complete}" CheckedChanged="OnCheckedChanged" />
                                    <StackLayout>
                                      <Label Text="{Binding taskName}"/>
                                      <Label Text="{Binding dueDate}"/>

@@ -25,8 +25,7 @@ namespace TodoGuru.TaskView
         {
             await App.Database.deleteUserTaskAsync(userTask);
 
-            // Navigate back to the previous page or any other page as you see fit
-            await Navigation.PopAsync();
+            await Navigation.PopToRootAsync();
         }
 
     }
