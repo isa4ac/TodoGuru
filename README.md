@@ -1,5 +1,6 @@
 # TodoGuru
 A to-do list app made with Xamarin.forms
+<br/>
 <img width="295" alt="whiteboard" src="https://github.com/isa4ac/TodoGuru/assets/126127721/c9410600-a29f-4bcd-b042-b47e77e4b614">
 
 Names: Guy-Leroc Ossebi, Isaac Van Meter,Modupeoluwa Daniel
