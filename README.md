@@ -3,12 +3,7 @@ A to-do list app made with Xamarin.forms
 <br/>
 <img width="295" alt="whiteboard" src="https://github.com/isa4ac/TodoGuru/assets/126127721/c9410600-a29f-4bcd-b042-b47e77e4b614">
 
-Names: Guy-Leroc Ossebi, Isaac Van Meter,Modupeoluwa Daniel
-
-Introduction: What is the problem you are addressing and how are you addressing it. Identify the audience or users of this application. (10 points)
-Skills: What are the technical skills you needed to develop the application, what are the tools or APIs (Platform specific and third party) used in the project? (10 points)
-Project contributions: Identify the contributions of all the group members. (10 points)
-Only one member of the group needs to submit the project.
+Names: Guy-Leroc Ossebi, Isaac Van Meter, Modupeoluwa Daniel
 
 Title: TodoGuru - Task Management Application
 
