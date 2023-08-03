@@ -25,6 +25,7 @@
     <None Remove="TaskView\" />
     <None Remove="TaskCategoryPage\" />
     <None Remove="Models\" />
+    <None Remove="EditTaskPage\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -34,5 +35,6 @@
     <Folder Include="TaskView\" />
     <Folder Include="TaskCategoryPage\" />
     <Folder Include="Models\" />
+    <Folder Include="EditTaskPage\" />
   </ItemGroup>
 </Project>
