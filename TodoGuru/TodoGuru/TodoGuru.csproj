@@ -19,7 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\" />
-    <None Remove="Resources\Images\" />
     <None Remove="MainPage\" />
     <None Remove="AddTaskPage\" />
     <None Remove="TaskView\" />
@@ -28,7 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="MainPage\" />
     <Folder Include="AddTaskPage\" />
     <Folder Include="TaskView\" />
