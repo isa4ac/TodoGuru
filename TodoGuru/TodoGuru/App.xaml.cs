@@ -25,7 +25,11 @@ namespace TodoGuru
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("#8BC800"),
+                BarTextColor = Color.FromHex("#FFFFFF")
+            };
         }
 
         protected override void OnStart ()
