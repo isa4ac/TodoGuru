@@ -15,9 +15,9 @@
               <StackLayout Padding="15">
                   <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                       <StackLayout Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding complete}" CheckedChanged="OnCheckedChanged"/>
+                        <CheckBox x:Name="checkBox" IsChecked="{Binding complete}" CheckedChanged="OnCheckedChanged" />
                           <StackLayout>
-                            <Label x:Name="TaskNameLabel" Text="{Binding taskName}"/>
+                            <Label Text="{Binding taskName}"/>
                             <Label Text="{Binding dueDate}"/>
                           </StackLayout>
                       </StackLayout>

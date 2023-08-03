@@ -29,5 +29,10 @@ namespace TodoGuru
         {
             return _database.UpdateAsync(userTask);
         }
+
+        public Task<int> deleteUserTaskAsync(UserTask userTask)
+        {
+            return _database.DeleteAsync(userTask);
+        }
     }
 }

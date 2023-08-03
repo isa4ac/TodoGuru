@@ -10,11 +10,11 @@ using Xamarin.Forms;
 namespace TodoGuru
 {
 
-    public class TodoItem
-    {
-        public string Name { get; set; }
-        public bool IsCompleted { get; set; }
-    }
+    //public class TodoItem
+    //{
+    //    public string Name { get; set; }
+    //    public bool IsCompleted { get; set; }
+    //}
 
     public partial class MainPage : ContentPage
     {
@@ -26,7 +26,7 @@ namespace TodoGuru
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            TodoCollectionView.ItemsSource = (await App.Database.getTaskAsync()).OrderBy(task => task.complete);
+            TodoCollectionView.ItemsSource = (await App.Database.getTaskAsync()).OrderBy(task => task.complete).ThenBy(task => task.dueDate);
         }
 
         private async void OnCreateTaskClicked(object sender, EventArgs e)
@@ -48,10 +48,8 @@ namespace TodoGuru
                 var selectedTask = checkBox.BindingContext as UserTask;
                 if (selectedTask != null)
                 {
-                    selectedTask.complete = e.Value;
+                    selectedTask.complete = checkBox.IsChecked;
                     await App.Database.updateUserTaskAsync(selectedTask);
-                    //TaskNameLabel.TextDecoration
-                    TodoCollectionView.ItemsSource = (await App.Database.getTaskAsync()).OrderBy(task => task.complete);
                 }
             }
         }

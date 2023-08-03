@@ -23,6 +23,8 @@
     <None Remove="MainPage\" />
     <None Remove="AddTaskPage\" />
     <None Remove="TaskView\" />
+    <None Remove="TaskCategoryPage\" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -30,10 +32,7 @@
     <Folder Include="MainPage\" />
     <Folder Include="AddTaskPage\" />
     <Folder Include="TaskView\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="CategoryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Folder Include="TaskCategoryPage\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
