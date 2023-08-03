@@ -5,9 +5,19 @@
              x:Class="TodoGuru.MainPage">
     <StackLayout>
         <Frame BackgroundColor="#8BC800"  Padding="10,60,10,10" CornerRadius="0">
-            <Label Text="To-do Guru" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="To-do Guru" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="26"/>
+                <Button Text="+"
+                         FontSize="40"
+                         TextColor="#FFFF"
+                         BackgroundColor="#8BC800"
+                         HorizontalOptions="EndAndExpand"
+                         BorderColor="White"
+                         WidthRequest="100"
+                         HeightRequest="100"
+                         Clicked="OnCreateTaskClicked" />
+            </StackLayout>
         </Frame>
-        <Button Text="Create Task" Clicked="OnCreateTaskClicked" ImageSource="./Resources/Images/plus.icon.png"/>
         <Button Text="View Task by Category" Clicked="OnViewByCategoryClicked"/>
         <CollectionView x:Name="TodoCollectionView" SelectionMode="Single" SelectionChanged="SelectedTaskRow">
           <CollectionView.ItemTemplate>

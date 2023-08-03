@@ -5,8 +5,8 @@
     x:Class="TodoGuru.AddTaskPage.AddTaskPage">
     <ContentPage.Content>
     <StackLayout>
-        <Frame BackgroundColor="#8BC800" Padding="60" CornerRadius="0">
-            <Label Text="Add Task" HorizontalTextAlignment="Start" TextColor="White" FontSize="26"/>
+        <Frame BackgroundColor="#8BC800" Padding="10,60,10,10" CornerRadius="0">
+            <Label Text="Add Task" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="26"/>
         </Frame>
         <StackLayout Padding="10,10,10,10">
 
