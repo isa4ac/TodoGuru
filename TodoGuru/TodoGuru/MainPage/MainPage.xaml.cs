@@ -10,17 +10,12 @@ using Xamarin.Forms;
 namespace TodoGuru
 {
 
-    //public class TodoItem
-    //{
-    //    public string Name { get; set; }
-    //    public bool IsCompleted { get; set; }
-    //}
-
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+            
         }
 
         protected override async void OnAppearing()
@@ -55,18 +50,9 @@ namespace TodoGuru
         }
 
         private async void OnViewByCategoryClicked(object sender, EventArgs e)
-        {
-            var allTasks = await App.Database.getTaskAsync();
-            var categories = allTasks.Select(task => task.Category).Distinct().ToList();
+        { 
 
-            var categoryTasks = new List<CategoryTask>();
-            foreach (var category in categories)
-            {
-                var tasksByCategory = allTasks.Where(task => task.Category == category).ToList();
-                categoryTasks.Add(new CategoryTask { CategoryName = category, Tasks = tasksByCategory });
-            }
-
-            await Navigation.PushAsync(new CategoryPage(categoryTasks));
+            await Navigation.PushAsync(new CategoryPage());
         }
     }
 }
