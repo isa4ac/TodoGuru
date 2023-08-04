@@ -6,58 +6,68 @@
     x:Class="TodoGuru.TaskView.TaskView">
     <ContentPage.Content>
         <StackLayout Padding="15">
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Task" TextColor="Black"/>
                     <Label x:Name="nameLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
 
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Status" TextColor="Black"/>
                     <Label x:Name="completeLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
 
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Created" TextColor="Black"/>
                     <Label x:Name="createDateLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
 
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Due" TextColor="Black"/>
                     <Label x:Name="dueDateLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
 
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Catagory" TextColor="Black"/>
                     <Label x:Name="catagoryLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
 
-            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="10" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
+            <yummy:PancakeView CornerRadius="20,20,20,20" BackgroundColor="GhostWhite" Padding="15" Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10', BlurRadius=5}">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Description" TextColor="Black"/>
                     <Label x:Name="descriptionLabel" TextColor="DarkGray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                 </StackLayout>
             </yummy:PancakeView>
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+               <Button 
+                x:Name="deleteButton"
+                Text="Delete Task"
+                Clicked="DeleteTask_Clicked"
+                WidthRequest="150"
+                BackgroundColor="#AD0606"
+                TextColor="White"
+                BorderRadius="5"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand"/>
 
-           <Button 
-            x:Name="deleteButton"
-            Text="Delete Task"
-            Clicked="DeleteTask_Clicked"
-            WidthRequest="150"
-            BackgroundColor="#AD0606"
-            TextColor="White"
-            BorderRadius="5"
-            VerticalOptions="EndAndExpand"
-            HorizontalOptions="CenterAndExpand"/>
+                <Button 
+                x:Name="updateButton"
+                Text="Update Task"
+                Clicked="UpdateTask_Clicked"
+                WidthRequest="175"
+                BackgroundColor="#8BC800"
+                TextColor="White"
+                BorderRadius="5"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

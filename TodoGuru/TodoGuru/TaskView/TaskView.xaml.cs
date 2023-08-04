@@ -21,6 +21,12 @@ namespace TodoGuru.TaskView
             completeLabel.Text = userTask.complete.ToString();
             catagoryLabel.Text = userTask.Category;
 		}
+
+        private async void UpdateTask_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditTaskPage.EditTaskPage(userTask));
+        }
+
         private async void DeleteTask_Clicked(object sender, EventArgs e)
         {
             await App.Database.deleteUserTaskAsync(userTask);
